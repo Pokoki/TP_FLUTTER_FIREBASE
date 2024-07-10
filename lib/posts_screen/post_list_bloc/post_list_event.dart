@@ -5,7 +5,7 @@ sealed class PostListEvent {
   const PostListEvent();
 }
 
-class GetAllPost extends PostListEvent {}
+class GetAllPosts extends PostListEvent {}
 
 class AddPost extends PostListEvent {
   final Post post;
