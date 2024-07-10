@@ -2,9 +2,18 @@ part of 'post_list_bloc.dart';
 
 enum PostsListStatus {
   initial,
-  loading,
-  success,
-  error,
+
+  gettingAllPosts,
+  addingPost,
+  updatingPost,
+
+  successAddingPost,
+  successUpdatingPost,
+  successGettingPost,
+
+  errorAddingPost,
+  errorUpdatingPost,
+  errorGettingPost,
 }
 
 
