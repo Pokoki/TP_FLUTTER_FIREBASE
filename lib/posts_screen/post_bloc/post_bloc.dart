@@ -24,6 +24,7 @@ class PostBloc extends Bloc<PostEvent, PostsState> {
 
     try{
       await appRepository.createPost(post);
+      await appRepository.getAllPosts();
       emit(state.copyWith(
         status: PostsStatus.successCreatePost,
         post: post,
@@ -43,6 +44,7 @@ class PostBloc extends Bloc<PostEvent, PostsState> {
 
     try{
       await appRepository.updatePost(post);
+      await appRepository.getAllPosts();
       emit(state.copyWith(
         status: PostsStatus.successUpdatePost,
         post: post,
