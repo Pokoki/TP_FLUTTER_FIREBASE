@@ -3,8 +3,10 @@ import 'dart:ui';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tp_flutter/posts_screen/models/post.dart';
 import 'package:tp_flutter/posts_screen/post_bloc/post_bloc.dart';
 import 'package:tp_flutter/posts_screen/post_create_screen.dart';
+import 'package:tp_flutter/posts_screen/post_detail_screen/post_detail_screen.dart';
 import 'package:tp_flutter/posts_screen/post_list_bloc/post_list_bloc.dart';
 import 'package:tp_flutter/posts_screen/posts_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -50,6 +52,20 @@ class MyApp extends StatelessWidget {
           routes: {
             CreatePostScreen.routeName: (context) => const CreatePostScreen(),
 
+          },
+          onGenerateRoute: (settings) {
+            Widget content = const SizedBox();
+
+            switch (settings.name) {
+              case PostDetailScreen.routeName:
+                final argument = settings.arguments;
+                if (argument is Post) {
+                  content = PostDetailScreen(post: argument);
+                }
+                break;
+            }
+
+            return MaterialPageRoute(builder: (context) => content);
           },
         ),
       ),
