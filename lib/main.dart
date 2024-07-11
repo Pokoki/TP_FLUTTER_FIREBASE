@@ -41,7 +41,9 @@ class MyApp extends StatelessWidget {
       create: (context) => AppRepository(remoteDataSource: FirestoreDataSource()),
       child: MultiBlocProvider(
         providers: [
-          BlocProvider(create: (context)=>PostBloc()),
+          BlocProvider(create: (context)=>PostBloc(
+            appRepository: context.read<AppRepository>(),
+          )),
           BlocProvider(create: (context)=>PostListBloc(
             appRepository: context.read<AppRepository>(),
           )),
